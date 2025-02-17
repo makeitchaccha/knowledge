@@ -1,6 +1,3 @@
 package knowledge
 
-type Account[T any] struct {
-	primary     T
-	subsidaries []T
-}
+type Account[T any] []Tagged[T]
