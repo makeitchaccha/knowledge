@@ -1,12 +1,12 @@
 package knowledge
 
 type Tagged[T any] struct {
-	value T
-	tags  []string
+	Value T
+	Tags  []string
 }
 
 func (t Tagged[T]) TaggedWith(tag string) bool {
-	for _, t := range t.tags {
+	for _, t := range t.Tags {
 		if t == tag {
 			return true
 		}
