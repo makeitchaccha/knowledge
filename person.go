@@ -5,16 +5,17 @@ import "image/color"
 type Person struct {
 	Identifier string          `yaml:"identifier"`
 	Name       string          `yaml:"name"`
-	ColorARGB  uint32          `yaml:"color_argb"` // 0xAARRGGBB make sense?
+	IconUrl    string          `yaml:"icon_url"`
+	ColorRGB   uint32          `yaml:"color"` // 0xRRGGBB
 	Twitter    Account[uint64] `yaml:"twitter"`
 	Discord    Account[uint64] `yaml:"discord"`
 }
 
-func (p Person) RealColor() color.Color {
+func (p Person) Color() color.Color {
 	return color.RGBA{
-		A: uint8(p.ColorARGB >> 24),
-		R: uint8(p.ColorARGB >> 16),
-		G: uint8(p.ColorARGB >> 8),
-		B: uint8(p.ColorARGB),
+		R: uint8(p.ColorRGB >> 16),
+		G: uint8(p.ColorRGB >> 8),
+		B: uint8(p.ColorRGB),
+		A: 0xFF,
 	}
 }
